@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+
+def dynamic_bar_chart():
+    categories = ['A', 'B', 'C', 'D', 'E']
+    values = [10, 15, 20, 25, 30]
+
+    plt.ion()
+    fig, ax = plt.subplots()
+    bars = ax.bar(categories, values, color='skyblue')
+    ax.set_ylim(0, 50)
+
+    for _ in range(20):
+        values = [np.random.randint(1, 50) for _ in values]
+        for bar, value in zip(bars, values):
+            bar.set_height(value)
+        plt.draw()
+        plt.pause(0.5)
+
+    plt.ioff()
+    plt.show()
+
+dynamic_bar_chart()
