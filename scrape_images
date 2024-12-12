@@ -1,0 +1,16 @@
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_images(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.content, 'html.parser')
+        images = soup.find_all('img')
+        for i, img in enumerate(images):
+            img_url = img.get('src')
+            print(f"Image {i + 1}: {img_url}")
+    else:
+        print(f"Failed to access {url}, status code: {response.status_code}")
+
+url = 'https://www.example.com'  # 替换为实际网址
+scrape_images(url)
