@@ -1,0 +1,32 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+int main() {
+    std::map<std::string, int> scores;
+    scores["Alice"] = 90;
+    scores["Bob"] = 85;
+    scores["Charlie"] = 95;
+
+    std::cout << "Scores:" << std::endl;
+    for (const auto& pair : scores) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+
+    std::string name;
+    std::cout << "Enter name to update score: ";
+    std::cin >> name;
+
+    int new_score;
+    std::cout << "Enter new score for " << name << ": ";
+    std::cin >> new_score;
+
+    if (scores.find(name) != scores.end()) {
+        scores[name] = new_score;
+        std::cout << "Score updated!" << std::endl;
+    } else {
+        std::cout << "Name not found." << std::endl;
+    }
+
+    return 0;
+}
