@@ -1,0 +1,10 @@
+fun main() {
+    val numbers = MutableList(20) { (1..100).random() }
+    println("Original list: $numbers")
+
+    numbers.sort()
+    println("Sorted list: $numbers")
+
+    numbers.sortDescending()
+    println("Sorted in descending order: $numbers")
+}
