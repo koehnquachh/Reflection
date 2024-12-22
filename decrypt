@@ -1,0 +1,21 @@
+require 'securerandom'
+
+def encrypt(text, key)
+  text.chars.map { |char| (char.ord + key).chr }.join
+end
+
+def decrypt(text, key)
+  text.chars.map { |char| (char.ord - key).chr }.join
+end
+
+puts "Simple Encryption Tool"
+key = SecureRandom.random_number(10..50)
+puts "Encryption Key: #{key}"
+
+print "Enter text to encrypt: "
+text = gets.chomp
+encrypted_text = encrypt(text, key)
+puts "Encrypted Text: #{encrypted_text}"
+
+decrypted_text = decrypt(encrypted_text, key)
+puts "Decrypted Text: #{decrypted_text}"
