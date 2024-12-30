@@ -1,0 +1,13 @@
+### 2. **基于时间的颜色变换**
+from datetime import datetime
+
+def time_based_color():
+    hour = datetime.now().hour
+    if hour < 12:
+        return "#FFDDC1"  # 早晨橙色
+    elif hour < 18:
+        return "#87CEEB"  # 下午蓝色
+    else:
+        return "#2C3E50"  # 夜晚深蓝
+
+print(time_based_color())
