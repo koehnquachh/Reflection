@@ -1,0 +1,20 @@
+class UnionFind:
+    def __init__(self, size):
+        self.parent = list(range(size))
+
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+
+    def union(self, x, y):
+        rootX = self.find(x)
+        rootY = self.find(y)
+        if rootX != rootY:
+            self.parent[rootX] = rootY
+
+# 示例
+uf = UnionFind(5)
+uf.union(0, 1)
+uf.union(1, 2)
+print(uf.find(0) == uf.find(2))
