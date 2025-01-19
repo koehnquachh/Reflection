@@ -1,0 +1,2 @@
+data.fillna(0, inplace=True)  # 将缺失值填充为0
+data.dropna(inplace=True)  # 删除包含缺失值的行
