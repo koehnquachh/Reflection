@@ -1,0 +1,8 @@
+SELECT
+    e.employee_id,
+    e.name,
+    d.department_name,
+    RANK() OVER (PARTITION BY d.department_id ORDER BY e.salary DESC) AS salary_rank
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE e.hire_date > '2020-01-01';
