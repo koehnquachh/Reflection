@@ -1,0 +1,18 @@
+use std::fs::File;
+use std::io::{self, BufRead};
+use std::path::Path;
+
+fn read_lines<P>(filename: P) -> io::Result<()>
+where P: AsRef<Path> {
+    let file = File::open(filename)?;
+    for line in io::BufReader::new(file).lines() {
+        println!("{}", line?);
+    }
+    Ok(())
+}
+
+fn main() {
+    if let Err(e) = read_lines("data.txt") {
+        eprintln!("Error reading file: {}", e);
+    }
+}
