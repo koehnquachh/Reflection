@@ -1,0 +1,8 @@
+SELECT 
+    t1.date,
+    t1.value,
+    t2.value AS prev_value,
+    ROUND((t1.value - t2.value) / t2.value * 100, 2) AS growth_rate
+FROM timeseries t1
+JOIN timeseries t2
+  ON t1.date = DATE_ADD(t2.date, INTERVAL 1 DAY);
